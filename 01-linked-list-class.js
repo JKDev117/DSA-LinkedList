@@ -33,6 +33,63 @@ class LinkedList {
         }
     }
 
+    insertBefore(insert_item, search_item){
+        if(this.head.value === search_item){
+            this.head = new _Node(insert_item, this.head)
+            return
+        }    
+
+        let currNode = this.head
+        let previousNode = this.head
+        
+        while((currNode !== null) && (currNode.value !== search_item)){
+            previousNode = currNode
+            currNode = currNode.next
+        }
+        if(currNode === null){
+            console.log(`Item '${search_item}' not found.`)
+            return
+        }
+        previousNode.next = new _Node(insert_item, currNode)
+    }
+
+    insertAfter(insert_item, search_item){
+        let tempNode = this.head;
+        while((tempNode !== null && tempNode.value !== search_item)){
+            tempNode = tempNode.next;
+        }
+        if(tempNode === null){
+            console.log(`Item '${search_item}' not found.`)
+            return
+        }
+        if(tempNode.next == null){
+            tempNode.next = new _Node(insert_item)
+        }
+        let tempNextNode = tempNode.next
+        tempNode.next = new _Node(insert_item, tempNextNode)
+    }
+    
+    insertAt(newNode, index){
+        if(index === 0){
+            this.insertFirst
+            return
+        }
+        let currIndex = 0
+        let currNode = this.head
+        let previousNode = this.head
+        while(currNode !==null && currIndex !== index){
+            currIndex++
+            previousNode = currNode
+            currNode = currNode.next
+        }
+        if(currNode === null){
+            console.log(`index doesn't exist`)
+            return
+        }
+        previousNode.next = new _Node(newNode)
+        previousNode.next.next = currNode
+    }
+    
     find(item) { 
         // Start at the head
         let currNode = this.head;
@@ -83,6 +140,15 @@ class LinkedList {
         previousNode.next = currNode.next;
     }
 
+    print(){
+        let currNode = this.head;
+        while(currNode != null){
+            console.log(currNode.value)
+            currNode = currNode.next
+        }
+        console.log()
+    }
+
 }
 
-
+module.exports = LinkedList

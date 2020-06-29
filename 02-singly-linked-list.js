@@ -12,3 +12,39 @@ Using the insertAt() method insert Kat in the 3rd position of the list.
 Remove Tauhida from the list.
 
 */
+
+const LinkedList = require('./01-linked-list-class')
+
+function main(){
+
+    const SLL = new LinkedList()
+
+    SLL.insertFirst('Apollo')
+    SLL.insertLast('Boomer')
+    SLL.insertLast('Helo')
+    SLL.insertLast('Husker')
+    SLL.insertLast('Starbuck')
+    SLL.print() // => Apollo, Boomer, Helo, Husker, Starbuck
+
+    SLL.insertLast('Tauhida')
+    SLL.print() // => Apollo, Boomer, Helo, Husker, Starbuck, Tauhida
+
+    SLL.remove('Husker')
+    SLL.print() // => Apollo, Boomer, Helo, Starbuck, Tauhida
+
+    SLL.insertBefore('Athena', 'Boomer') //
+    SLL.print() //=> Apollo, Athena, Boomer, Helo, Starbuck, Tauhida
+
+    SLL.insertAfter('Hotdog', 'Helo')
+    SLL.print() //=> Apollo, Athena, Boomer, Helo, Hotdog, Starbuck, Tauhida
+
+    SLL.insertAt('Kat', 3)
+    SLL.print() //=> Apollo, Athena, Boomer, Kat, Helo, Hotdog, Starbuck, Tauhida
+
+    SLL.remove('Tauhida')
+    SLL.print() //=> Apollo, Athena, Boomer, Kat, Helo, Hotdog, Starbuck
+}
+
+main()
+
+// node 02-singly-linked-list.js
